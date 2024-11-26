@@ -1,0 +1,23 @@
+{% extends 'layouts/blank.html' %}
+{% block content %}
+
+<div id="courses-navbar">
+    <a href="{% url 'courses' %}">Courses</a>
+    <a href="">Recommended Courses</a>
+    <a href="{% url 'course_create' %}">Add Course</a>
+    <form action="#" method="GET">
+        {% csrf_token %}
+        <input type="text" id="search_string" name="search_string">
+        <input type="submit" value="search">
+    </form>
+</div>
+<hr>
+<div id="courses-container">
+    {% for course in courses %}
+    <div class="courses-course">
+        <a href="">{{ course.title }}</a> {% if course.instructor %} -- {{ course.instructor }} {% endif %}
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}

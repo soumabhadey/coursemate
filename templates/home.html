@@ -1,12 +1,72 @@
-{% extends 'layout.html' %}
+{% extends 'layouts/blank.html' %}
+
 {% block content %}
-	<strong>
-		Lorem, ipsum.
-	</strong>
-	<p>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum accusamus maxime, asperiores blanditiis minus illum quasi a odit repellat aspernatur fugiat laboriosam officia quo! Recusandae cupiditate placeat mollitia deserunt voluptate enim vitae, facere cumque quae ducimus iusto qui sunt suscipit culpa ratione nisi cum eos ex tempore? Qui rerum dignissimos incidunt quibusdam adipisci aliquam modi voluptatibus nemo blanditiis! Maiores odit impedit et ducimus blanditiis corporis doloremque recusandae veritatis consequuntur ipsa, velit ipsum distinctio laudantium? Temporibus repellat quaerat facere sed ex mollitia expedita quas tempora officiis, quibusdam dicta dolorum! Quod sint odio voluptate placeat commodi ullam harum quo ratione impedit quae.
-	</p>
-	<small>
-		Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident laboriosam minima dolorem libero maiores voluptas sit facilis molestiae itaque distinctio rem ut quam eius, iure accusantium, tenetur odit voluptatibus. Magnam!
-	</small>
+<div class="container py-5">
+    <!-- Section Header with Stronger Contrast -->
+    <div class="text-center mb-5">
+        <h1 class="display-3 text-white">Welcome to Coursemate</h1>
+        <p class="lead text-light">A collaborative platform for online learners to connect and help each other.</p>
+    </div>
+
+    <!-- About the Platform Section -->
+    <div class="row">
+        <div class="col-md-6">
+            <h2 class="text-light">What is Coursemate?</h2>
+            <p class="text-light">
+                Coursemate is an innovative web platform designed to help students pursuing online courses. 
+                Whether you're taking courses on platforms like edX, Udemy, YouTube, or others, Coursemate offers a dedicated space 
+                for learners to communicate, share solutions, and help each other with their queries. 
+                Our platform provides chat spaces tailored to each course, allowing you to get quick responses from your fellow learners.
+            </p>
+            <p class="text-light">
+                By connecting learners from various backgrounds, we aim to bridge the gap between students and provide timely support.
+                No more waiting for responses from course creators or struggling alone with outdated software versions – Coursemate is here to help.
+            </p>
+        </div>
+        <div class="col-md-6">
+            <img src="/static/banner.avif" alt="Coursemate Banner" class="img-fluid rounded shadow-lg">
+        </div>
+    </div>
+
+    <!-- Key Features Section -->
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card bg-dark text-light border-light">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Course-Specific Chat Spaces</h5>
+                    <p class="card-text">Each course has its own dedicated chat space for discussing queries, solutions, and course content.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-dark text-light border-light">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Collaborative Learning</h5>
+                    <p class="card-text">Learn from your peers and help others solve issues related to the courses you're pursuing.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-dark text-light border-light">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Quick Assistance</h5>
+                    <p class="card-text">Get timely support for your queries, and help others by sharing your knowledge and experiences.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action Section with Stronger Button Contrast -->
+    <div class="text-center mt-5">
+        <a href="#" class="btn btn-primary btn-lg">Join Coursemate and Start Collaborating</a>
+    </div>
+</div>
+
+<!-- Footer Section with Dark Background -->
+<section id="footer" class="bg-dark text-light py-4">
+    <div class="container text-center">
+        <p class="mb-0">&copy; 2024 Coursemate. All Rights Reserved.</p>
+    </div>
+</section>
+
 {% endblock content %}

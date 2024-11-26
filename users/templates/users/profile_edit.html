@@ -1,0 +1,84 @@
+{% extends 'layouts/blank.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="text-center mb-4 text-white">
+        {% if onboarding %}
+        Complete Your Profile
+        {% else %}
+        Edit Your Profile
+        {% endif %}
+    </h1>
+
+    <!-- Profile Avatar and Username Section -->
+    <div class="text-center mb-4">
+        <img id="avatar" src="{{ user.profile.avatar }}" class="rounded-circle mb-3 shadow-lg" width="150" height="150"
+            alt="Profile Avatar">
+        <h2 id="displayname" class="text-white">{{ user.profile.displayname|default:"" }}</h2>
+        <p class="text-white">@{{ user.username }}</p>
+
+
+
+        {% if user.profile.image %}
+        <a href="{% url 'avatar_delete' %}" class="btn btn-danger">Delete Avatar</a>
+        {% endif %}
+    </div>
+
+
+
+    <!-- Profile Form -->
+    <form method="POST" enctype="multipart/form-data" class="bg-dark p-4 rounded shadow-lg">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <!-- Custom Interests Input -->
+        <div class="form-group mb-3">
+            <label for="id_interests" class="form-label text-light">Interests</label>
+            <input type="text" name="interests" id="id_interests" class="form-control bg-secondary text-white"
+                value="{{ interests }}" placeholder="Enter interests, separated by commas">
+            <small id="interestsPreview" class="text-muted mt-2">Interests: {{ form.interests.value|default:''
+                }}</small>
+        </div>
+
+        <!-- Submit and Cancel Buttons -->
+        <div class="d-flex justify-content-between mt-4">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            {% if onboarding %}
+            <a class="btn btn-outline-light" href="{% url 'home' %}">Skip</a>
+            {% else %}
+            <a class="btn btn-outline-light" href="{{ request.META.HTTP_REFERER }}">Cancel</a>
+            {% endif %}
+        </div>
+    </form>
+</div>
+
+<script src="/static/jquery/jquery-3.7.1.min.js"></script>
+<script>
+    // This updates the avatar
+    $('input[type="file"]').on('change', function (event) {
+        const file = event.target.files[0];
+        const image = $('#avatar');
+
+        if (file && file.type.includes('image')) {
+            const url = URL.createObjectURL(file);
+            image.attr('src', url);
+        }
+    });
+
+    // This updates the name
+    $('#id_displayname').on('input', function () {
+        $('#displayname').text($(this).val());
+    });
+
+    // This updates the interests preview
+    $('#id_interests').on('input', function () {
+        let interests = $(this).val();
+        // Trim extra spaces before and after commas
+        interests = interests.split(',').map(function (interest) {
+            return interest.trim();
+        }).join(', ');
+
+        $('#interestsPreview').text('Interests: ' + interests);
+    });
+</script>
+{% endblock %}

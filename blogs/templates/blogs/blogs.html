@@ -1,0 +1,38 @@
+{% extends 'layouts/blank.html' %}
+
+{% block content %}
+
+
+<div class="left-navigation-panel">
+    {% if user.profile.is_creator %}
+    <a href="{% url 'blogs_my' %}">My Blogs</a>
+    {% endif %}
+</div>
+
+<div class="blogs-container">
+    {% if user.profile.is_creator %}
+    <a href="#">Create Blog</a>
+    {% endif %}
+    <form action="{% url 'blogs_search' %}" method="POST">
+        <input type="text" name="search_query" placeholder="search blogs">
+        <input type="submit" value="search">
+    </form>
+    <div class="blogs-list">
+        {% for blog in blogs %}
+        <div class="blog-card">
+            <a href="#">
+                <img src="{{ blog.banner }}" alt="">
+                blog.title
+            </a>
+            {% if blog.author == user.profile %}
+            <a href="#">Edit</a>
+            <a href="#">Delete</a>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+{% endblock %}

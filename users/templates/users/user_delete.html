@@ -1,0 +1,80 @@
+{% extends 'layouts/card.html' %}
+
+{% block content %}
+
+<style>
+    /* Style for the Delete Account Card */
+    .card {
+        background-color: #1e1e1e;
+        /* Dark background */
+        border-radius: 8px;
+        /* Rounded corners */
+        border: 1px solid #444;
+        /* Light border for contrast */
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+        /* Larger title */
+        font-weight: bold;
+        /* Bold title */
+    }
+
+    .card-body {
+        padding: 30px;
+        /* Extra padding inside the card */
+    }
+
+    .card .btn-danger {
+        background-color: #dc3545;
+        /* Red background for delete button */
+        border-color: #dc3545;
+        /* Matching border */
+    }
+
+    .card .btn-danger:hover {
+        background-color: #c82333;
+        /* Darker red on hover */
+        border-color: #bd2130;
+        /* Darker border on hover */
+    }
+
+    .card .btn-secondary {
+        background-color: #6c757d;
+        /* Secondary button background */
+        border-color: #6c757d;
+        /* Matching border */
+    }
+
+    .card .btn-secondary:hover {
+        background-color: #5a6268;
+        /* Darker secondary button on hover */
+        border-color: #545b62;
+        /* Darker border on hover */
+    }
+</style>
+
+
+
+
+<div class="container mt-5">
+    <!-- Card for delete confirmation -->
+    <div class="card bg-dark text-light border-light">
+        <div class="card-body">
+            <h2 class="card-title">Delete Account</h2>
+
+            <!-- Confirmation Message -->
+            <p class="mb-4">Are you sure you want to delete your account? This action cannot be undone.</p>
+
+            <!-- Form for account deletion -->
+            <form method="POST" class="mb-3">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Delete Account</button>
+            </form>
+
+            <!-- Cancel/Delete Account action -->
+            <a href="{% url 'user' %}" class="btn btn-secondary">No, Keep My Account</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

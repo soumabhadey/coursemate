@@ -1,2 +1,7 @@
 .venv/
 .vscode/
+static/images/
+static/banner.avif
+static/banner.webp
+static/logo.avif
+media/

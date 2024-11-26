@@ -1,0 +1,52 @@
+{% extends 'layouts/blank.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Profile Header Section -->
+    <div class="row justify-content-center">
+        <div class="col-md-4 text-center">
+            <!-- Profile Avatar -->
+            <img src="{{ profile.avatar }}" alt="Profile Picture" class="rounded-circle img-fluid mb-3" width="150" height="150">
+            <h1 class="text-white">{{ profile.name }}</h1>
+            <div class="text-white">@{{ profile.user.username }}</div>
+        </div>
+    </div>
+
+    <!-- Profile Details Section -->
+    <div class="row mt-5">
+        <div class="col-md-8 offset-md-2">
+            <div class="card bg-dark text-light border-light">
+                <div class="card-body">
+
+                    {% if profile.is_creator %}
+                    <p class="card-text">Creator</p>
+                    {% else %}
+                    <p class="card-text mt-4">Not a creator or instructor.</p>
+                    {% endif %}
+
+                    <!-- Info -->
+                    {% if profile.info %}
+                    <h5 class="card-title">About</h5>
+                    <p class="card-text">{{ profile.info|linebreaksbr }}</p>
+                    {% else %}
+                    <p class="card-text">No information available.</p>
+                    {% endif %}
+                    
+                    <!-- Interests Section -->
+                    {% if profile.interests %}
+                    <h5 class="card-title mt-4">Interests</h5>
+                    <ul class="list-group list-group-flush">
+                        {% for interest in profile.interests %}
+                        <li class="list-group-item bg-dark text-light">{{ interest }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <p class="card-text mt-4">No interests listed.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

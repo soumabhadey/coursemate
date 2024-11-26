@@ -1,0 +1,59 @@
+{% extends 'layouts/blank.html' %}
+
+{% block content %}
+
+<style>
+    /* Styling for the user page */
+    .card {
+        background-color: #1e1e1e;
+        /* Dark background for the card */
+        border: 1px solid #444;
+        /* Subtle border */
+        border-radius: 8px;
+        /* Rounded corners */
+    }
+
+    .card-title {
+        color: #ffffff;
+        /* White text for headings */
+        font-weight: bold;
+        /* Bold headings */
+    }
+
+    .card p {
+        color: #dcdcdc;
+        /* Light gray for body text */
+    }
+
+    .card .btn-primary {
+        background-color: #007bff;
+        /* Blue button background */
+        border-color: #007bff;
+        /* Border color to match button */
+    }
+
+    .card .btn-primary:hover {
+        background-color: #0056b3;
+        /* Darker blue on hover */
+        border-color: #004085;
+        /* Darker border on hover */
+    }
+</style>
+
+<div class="container mt-5">
+    <!-- Card for user information -->
+    <div class="card bg-dark text-light border-light">
+        <div class="card-body">
+            <h2 class="card-title">Your Account</h2>
+            <p><strong>Username:</strong> {{ user.username }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+
+            <!-- Edit account button -->
+            <a href="{% url 'user_settings' %}" class="btn btn-primary mt-3">Edit Account</a>
+            <a href="{% url 'user_password_change' %}" class="btn btn-primary mt-3">Change Password</a>
+            <a href="{% url 'user_delete' %}" class="btn btn-danger mt-3">Delete Account</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
